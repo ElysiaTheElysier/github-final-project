@@ -1,9 +1,5 @@
 from django.contrib import admin
-from .models import Course, Lesson, Question, Choice, Submission
-
-# Mocking Instructor and Learner for the imports requirement
-class Instructor(models.Model): pass
-class Learner(models.Model): pass
+from .models import Course, Lesson, Instructor, Learner, Question, Choice, Submission
 
 class ChoiceInline(admin.StackedInline):
     model = Choice
@@ -15,7 +11,7 @@ class QuestionInline(admin.StackedInline):
 
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
-    list_display = ['content']
+    list_display = ['question_text']
 
 class LessonAdmin(admin.ModelAdmin):
     list_display = ['title']
